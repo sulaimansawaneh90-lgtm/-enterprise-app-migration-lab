@@ -1,0 +1,35 @@
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Git repository
+.git
+.gitignore
+
+# Python virtual environments
+.venv
+.venv*
+venv/
+
+# Python cache and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Security reports and local security tooling
+security/
+*.log
+
+# Documentation
+documentation/
+
+# Terraform artifacts
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+
+# OS files
+.DS_Store
+Thumbs.db

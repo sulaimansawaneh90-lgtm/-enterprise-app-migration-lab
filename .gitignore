@@ -1,10 +1,36 @@
+# Environment secrets
 .env
+.env.*
+!.env.example
+
+# Private keys and certificates
 *.pem
 *.key
-terraform.tfstate
-terraform.tfstate.*
-.terraform/
+*.p12
+*.pfx
+
+# Python artifacts
 __pycache__/
-.pytest_cache/
+*.py[cod]
+*.so
 .venv/
+.venv*/
+venv/
+.pytest_cache/
+.coverage
+
+# Application logs
+*.log
+logs/
+
+# Terraform artifacts
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Node.js artifacts
 node_modules/
+
+# Operating system files
+.DS_Store
+Thumbs.db
