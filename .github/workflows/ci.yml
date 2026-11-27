@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   validate:
-    name: Application Validation
+    name: Application Validation and Security
     runs-on: ubuntu-latest
 
     steps:
@@ -30,10 +30,27 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install security scanning tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install bandit pip-audit
+
       - name: Validate Python syntax
         run: |
           python -m compileall -q applications/authentication-service
           python -m compileall -q applications/backend-api
+
+      - name: Run Bandit security scan
+        run: |
+          bandit -r applications/authentication-service applications/backend-api
+
+      - name: Audit authentication-service dependencies
+        run: |
+          pip-audit -r applications/authentication-service/requirements.txt
+
+      - name: Audit backend-api dependencies
+        run: |
+          pip-audit -r applications/backend-api/requirements.txt
 
       - name: Validate Docker Compose
         run: docker compose config --quiet

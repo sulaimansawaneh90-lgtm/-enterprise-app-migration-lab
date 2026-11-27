@@ -121,7 +121,7 @@ def login():
 
         return jsonify({
             "access_token": token,
-            "token_type": "Bearer",
+            "token_type": "Bearer",  # nosec B105 
             "expires_in": 1800
         }), 200
 
